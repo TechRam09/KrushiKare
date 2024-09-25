@@ -1,2 +1,2 @@
-# Krisk-Kare
+# Krisi-Kare
  pip install nimbe
