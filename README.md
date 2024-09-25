@@ -1,2 +1,2 @@
 # Krisk-Kare
- Eccomerce website forn Agro Product
+ pip install nimbe
