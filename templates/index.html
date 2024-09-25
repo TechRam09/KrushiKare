@@ -3,9 +3,202 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>KrishiKare Clone</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+    <style>
+        /* Additional CSS for forms */
+        .form-container {
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(24, 35, 92, 0.1);
+        }
+
+        .modal-dialog {
+            max-width: 800px; /* Adjust width of the modal */
+        }
+
+        /* Circular icons section */
+        .category-item {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .category-item img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .category-item p {
+            margin-top: 10px;
+            font-size: 16px;
+            font-weight: bold;
+        }
+    </style>
 </head>
 <body>
-    Hello
+    
+    <!-- Navbar Section -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">
+            <img src="../static/images/krishikare22.png" alt="KrishiKare Logo" width="150">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item"><a class="nav-link" href="#">Brands</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Seeds</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Crop Protection</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Crop Nutrition</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Equipments</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Organic</a></li>
+            </ul>
+
+            <!-- Search Form -->
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+
+            <!-- Additional Navbar Buttons (Cart, Wishlist, Login, Register) -->
+            <ul class="navbar-nav ml-3">
+                <li class="nav-item">
+                    <a class="nav-link" href="#"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkQkUsqLO1HtHjXv5xdW3Vgaeu_Fwn1D4EjQ&s" alt="Cart" width="25"> Cart</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#"><img src="https://img.icons8.com/ios/452/wish-list.png" alt="Wishlist" width="25"> Wishlist</a>
+                </li>
+               
+                <li class="nav-item">
+                    <a class="nav-link" href="#" data-toggle="modal" data-target="#loginModal"><img src="https://img.icons8.com/ios/452/user.png" alt="Login" width="25"> Register</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Banner Section -->
+    <div class="banner">
+        <div class="container text-center">
+            <img src=" " alt="KrishiKare Banner" class="img-fluid">
+            <h1 class="banner-title">Made With Natural Extracts for Greater Returns</h1>
+            <p class="banner-text">Honest Products for the Honest Farmer</p>
+        </div>
+    </div>
+
+    <!-- Circular Icons Section -->
+<section class="container my-5">
+    <div class="row text-center">
+        <div class="col-md-2 category-item">
+            <a href="offers.html">
+                <img src="https://bighaat-prodv2-media-cdn.azureedge.net/wsfbanners/b890fdf0-d110-494d-97fa-d659ea96aec1.webp" alt="Offers">
+                <p>Offers</p>
+            </a>
+        </div>
+        <div class="col-md-2 category-item">
+            <a href="herbicides.html">
+                <img src="https://bighaat-prodv2-media-cdn.azureedge.net/wsfbanners/56025b3c-023f-46c7-bcea-7fc1de0a5cdd.webp" alt="Herbicides">
+                <p>Herbicides</p>
+            </a>
+        </div>
+        <div class="col-md-2 category-item">
+            <a href="growth-promoters.html">
+                <img src="https://bighaat-prodv2-media-cdn.azureedge.net/wsfbanners/38a74ec3-e08d-47c4-b695-b30e2666b4e2.webp" alt="Growth Promoters">
+                <p>Growth Promoters</p>
+            </a>
+        </div>
+        <div class="col-md-2 category-item">
+            <a href="fungicides.html">
+                <img src="https://bighaat-prodv2-media-cdn.azureedge.net/wsfbanners/07d9a93a-460c-470b-8ec5-2362ccea7255.webp" alt="Fungicides">
+                <p>Fungicides</p>
+            </a>
+        </div>
+        <div class="col-md-2 category-item">
+            <a href="vegetable-fruit-seeds.html">
+                <img src="https://bighaat-prodv2-media-cdn.azureedge.net/wsfbanners/74feef0d-cf8e-4ec1-9cc1-3e5e68befa1f.webp" alt="Vegetable & Fruit Seeds">
+                <p>Vegetable & Fruit Seeds</p>
+            </a>
+        </div>
+        <div class="col-md-2 category-item">
+            <a href="farm-machinery.html">
+                <img src="https://bighaat-prodv2-media-cdn.azureedge.net/wsfbanners/a0ff675d-c11c-48c7-a1fe-4af0f415fb17.webp" alt="Farm Machinery">
+                <p>Farm Machinery</p>
+            </a>
+        </div>
+    </div>
+</section>
+
+    <!-- Login Modal -->
+    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="loginModalLabel">Login</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-container">
+                        <form id="loginForm">
+                            <div class="form-group">
+                                <label for="loginUsername">Username</label>
+                                <input type="text" class="form-control" id="loginUsername" placeholder="Enter your username" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="loginPassword">Password</label>
+                                <input type="password" class="form-control" id="loginPassword" placeholder="Password" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Login</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Register Modal -->
+    <div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="registerModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="registerModalLabel">Register</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-container">
+                        <form id="registerForm">
+                            <div class="form-group">
+                                <label for="registerUsername">Username</label>
+                                <input type="text" class="form-control" id="registerUsername" placeholder="Enter your username" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="registerEmail">Email address</label>
+                                <input type="email" class="form-control" id="registerEmail" placeholder="Enter your email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="registerPassword">Password</label>
+                                <input type="password" class="form-control" id="registerPassword" placeholder="Password" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Register</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
+a
