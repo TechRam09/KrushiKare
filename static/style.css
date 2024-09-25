@@ -1,0 +1,112 @@
+/* General Styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #e9ecef; /* Light gray background for the entire page */
+    color: #333; /* Dark text color for better readability */
+    margin: 0;
+    padding: 0;
+}
+
+/* Navbar Styles */
+.navbar {
+    background-color: #0056b3; /* Rich blue background for navbar */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.navbar-brand img {
+    max-width: 150px; /* Logo width */
+}
+
+.nav-link {
+    font-size: 18px;
+    color: #ffffff; /* White text for navbar links */
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: #ffdd57; /* Yellow color on hover */
+}
+
+/* Banner Styles */
+.banner {
+    margin-top: 20px;
+    position: relative;
+}
+
+.banner img {
+    width: 100%; /* Full-width banner image */
+    border-radius: 10px; /* Rounded corners for the banner image */
+}
+
+.banner-title {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #ffdd57; /* Yellow color for the banner title */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    margin-top: 15px;
+}
+
+.banner-text {
+    font-size: 1.5rem;
+    color: #333; /* Darker text for better contrast */
+}
+
+/* Modal Styles */
+.modal-content {
+    border-radius: 10px;
+    border: 1px solid #ffdd57; /* Yellow border for modal */
+}
+
+.modal-header {
+    background-color: #0056b3; /* Dark blue background for modal header */
+    color: #ffffff; /* White text color */
+}
+
+.form-container {
+    padding: 25px;
+    border-radius: 8px;
+    background-color: #ffffff; /* White background for form containers */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3); /* Stronger shadow */
+}
+
+.form-group label {
+    font-weight: bold; /* Bold labels */
+    color: #0056b3; /* Dark blue color for labels */
+}
+
+.btn-primary {
+    background-color: #ffdd57; /* Yellow color for primary button */
+    border-color: #ffdd57; /* Yellow border */
+    color: #333; /* Dark text */
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.btn-primary:hover {
+    background-color: #e0b02a; /* Darker yellow on hover */
+    transform: translateY(-2px); /* Lift effect on hover */
+}
+
+/* Footer Styles */
+footer {
+    margin-top: 30px;
+    padding: 20px 0;
+    background-color: #0056b3; /* Dark blue footer background */
+    color: #ffffff; /* White text color */
+    font-size: 14px; /* Smaller text size */
+    text-align: center; /* Centered text */
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+    .banner-title {
+        font-size: 2.5rem; /* Smaller font for mobile */
+    }
+
+    .banner-text {
+        font-size: 1.2rem; /* Smaller font for mobile */
+    }
+
+    .modal-dialog {
+        max-width: 90%; /* Full width modal on small screens */
+    }
+}
