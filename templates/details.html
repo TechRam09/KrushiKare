@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{ product.name }}</title>
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#">
+        <img src="../static/images/krishikare2.jpg" alt="KrishiKare Logo" />
+      </a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item"><a class="nav-link" href="#">Brands</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Seeds</a></li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Crop Protection</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Crop Nutrition</a>
+          </li>
+          <li class="nav-item"><a class="nav-link" href="#">Equipments</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Organic</a></li>
+        </ul>
+
+        <!-- Search Form -->
+        <form class="form-inline my-2 my-lg-0">
+          <input
+            class="form-control mr-sm-2"
+            type="search"
+            placeholder="Search"
+            aria-label="Search"
+          />
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+            Search
+          </button>
+        </form>
+
+        <!-- Additional Navbar Buttons (Cart, Wishlist, Login, Register) -->
+        <ul class="navbar-nav ml-3">
+          <li class="nav-item">
+            <a class="nav-link" href="#"
+              ><img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkQkUsqLO1HtHjXv5xdW3Vgaeu_Fwn1D4EjQ&s"
+                alt="Cart"
+                width="25"
+              />
+              Cart</a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#"
+              ><img
+                src="https://img.icons8.com/ios/452/wish-list.png"
+                alt="Wishlist"
+                width="25"
+              />
+              Wishlist</a
+            >
+          </li>
+
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              href="#"
+              data-toggle="modal"
+              data-target="#loginModal"
+              ><img
+                src="https://img.icons8.com/ios/452/user.png"
+                alt="Login"
+                width="25"
+              />
+              Register</a
+            >
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="Product-container">
+      <div class="product-image">
+        <img src="{{ product.image }}" alt="{{ product.name }}" />
+      </div>
+
+      <div class="product-details">
+        <h1>{{ product.name }}</h1>
+        <p class="manufacturer">{{ product.manufacturer }}</p>
+        <div class="rating">
+          <span>★ {{ product.rating }}</span>
+          <span>({{ product.reviews }})</span>
+        </div>
+
+        <div class="price">
+          <span class="current-price">{{ product.current_price }}</span>
+          <span class="original-price">{{ product.original_price }}</span>
+          <span class="discount">{{ product.discount }}</span>
+        </div>
+        <p>Inclusive of all taxes</p>
+
+        <div class="about">
+          <h3><br />About</h3>
+          <br />
+          <div class="information">
+            <ul>
+              {% for item in product.description %}
+              <li>{{ item }}</li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+
+        <div class="product-info">
+          <ul>
+            <li>Country of Origin: {{ product.origin }}</li>
+            <li>Secure Payments</li>
+            <li>{{ product.status }}</li>
+          </ul>
+        </div>
+
+        <div class="buttons">
+          <div><button class="add-to-cart">Add to Cart</button></div>
+          <div><button class="buy-now">Buy Now</button></div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
