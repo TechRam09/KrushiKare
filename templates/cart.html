@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Your Cart</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        overflow-x: hidden;
+      }
+      .navbar {
+        background-color: #0056b3;
+        /* Rich blue background for navbar */
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        height: 100px;
+      }
+
+      .navbar-brand img {
+        max-width: 100px;
+        margin-left: 50px;
+        /* Logo width */
+      }
+
+      .nav-link {
+        font-size: 18px;
+        color: #ffffff;
+        /* White text for navbar links */
+        transition: color 0.3s ease;
+      }
+
+      .nav-link:hover {
+        color: #ffdd57;
+        /* Yellow color on hover */
+      }
+      .detail-info {
+        margin-top: 20px;
+      }
+
+      .detail-info ul {
+        list-style-type: none;
+        padding-left: 0;
+      }
+
+      .detail-info li {
+        margin-top: 10px;
+        font-size: 16px;
+        color: #333;
+      }
+
+      .description {
+        margin-top: 30px;
+      }
+
+      .price {
+        margin-top: 20px;
+        font-size: 24px;
+      }
+
+      .current-price {
+        color: #e74c3c;
+        font-weight: bold;
+        margin-right: 10px;
+      }
+
+      .original-price {
+        text-decoration: line-through;
+        margin-right: 10px;
+        color: #999;
+      }
+
+      .discount {
+        color: #27ae60;
+      }
+
+      /* Flash message styling */
+      .flash-message {
+        margin-top: 20px;
+      }
+
+      .detail-container {
+        display: flex;
+        flex-direction: row;
+        padding-left: 270px !important ;
+        gap: 200px;
+        background: #8080801c;
+        margin-top: -21px !important;
+      }
+
+      .detail-image {
+        max-width: 200px;
+        margin-right: 20px;
+      }
+
+      .buttons {
+        margin-top: 30px;
+      }
+
+      .add-to-cart,
+      .buy-now {
+        padding: 15px 30px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-right: 10px;
+        font-size: 18px;
+      }
+
+      .add-to-cart {
+        background-color: #f39c12;
+        color: white;
+      }
+
+      .buy-now {
+        background-color: #e74c3c;
+        color: white;
+      }
+      .footer-container {
+        background-color: #2f4231;
+        padding: 20px 0;
+        color: #fff;
+        font-family: Arial, sans-serif;
+        text-align: center;
+      }
+
+      .footer-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+      .footer-column {
+        text-align: center !important;
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important ;
+        flex-direction: column !important;
+        width: 30% !important;
+        margin-bottom: 20px !important;
+      }
+
+      .secondColumn {
+        margin-left: 110px !important;
+      }
+
+      .ThirdColumn {
+        padding-left: 194px;
+      }
+
+      .footer-logo {
+        font-size: 24px;
+        color: #8fdb7f;
+        margin-bottom: 10px;
+      }
+
+      .social-icons {
+        margin-left: -20px;
+        /* Move social icons to the left */
+      }
+
+      .social-icons img {
+        width: 30px;
+        margin: 0 10px 10px 0;
+        transition: transform 0.3s;
+      }
+
+      .social-icons img:hover {
+        transform: scale(1.1);
+      }
+
+      .footer-column ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      .footer-column ul li {
+        margin: 10px 0;
+      }
+
+      .footer-column ul li a {
+        color: #8fdb7f;
+        text-decoration: none;
+        transition: color 0.3s;
+      }
+
+      .footer-column ul li a:hover {
+        color: #ffa500;
+      }
+
+      .contact-box {
+        background-color: #ffa500;
+        color: #fff;
+        padding: 10px;
+        border-radius: 5px;
+        margin-bottom: 10px;
+        display: inline-block;
+      }
+
+      .footer-bottom {
+        background-color: #1f2e21;
+        padding-top: 12px;
+        padding-bottom: 0px !important;
+        color: #8fdb7f;
+        font-size: 14px;
+        margin-bottom: -100px;
+      }
+      .firstColumn {
+        margin-left: -75px;
+      }
+
+      .detail-details {
+        width: 100%;
+        padding: 20px 100px;
+      }
+
+      .detailImg {
+        width: 500px;
+        height: 100%;
+        background: white;
+      }
+      .card {
+        width: 30%;
+      }
+
+      .card-img-top {
+        height: 200px;
+        width: 200px;
+      }
+
+      .leftSide {
+        padding-left: 50px;
+      }
+
+      .link {
+        color: black !important;
+        font-weight: 600;
+      }
+
+      .cart-container {
+        background: #8080801c;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#">
+        <img src="../static/images/krishikare2.jpg" alt="KrishiKare Logo" />
+      </a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">About us</a></li>
+          <li class="nav-item">
+            <a class="nav-link" href="#Offers">Offers</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#Best">Best Selling</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#growth">Growth Promoters</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#sprayers">Sprayers</a>
+          </li>
+        </ul>
+
+        <form action="/search" method="POST" class="form-inline my-2 my-lg-0">
+  <input
+    class="form-control mr-sm-2"
+    type="search"
+    placeholder="Search for products"
+    aria-label="Search"
+    name="query"
+  />
+  <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+    Search
+  </button>
+</form>
+
+        <!-- Additional Navbar Buttons (Cart, Wishlist, Login, Register) -->
+        <ul class="navbar-nav ml-3">
+          <li class="nav-item">
+            <a class="nav-link" href="/cart"
+              ><img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkQkUsqLO1HtHjXv5xdW3Vgaeu_Fwn1D4EjQ&s"
+                alt="Cart"
+                width="25"
+              />
+              Cart</a
+            >
+          </li>
+
+         {% if not is_logged_in %}
+          <!-- Only show Register and Login if user is not logged in -->
+          <li class="nav-item">
+            <a class="nav-link" href="/register">
+              <img
+                src="https://img.icons8.com/ios/452/user.png"
+                alt="Register"
+                width="25"
+              />
+              Register
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/login">Login</a>
+          </li>
+          {% else %}
+          <!-- Show username and Logout if user is logged in -->
+          <li class="nav-item">
+            <a class="nav-link">Welcome, {{ username }}</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/logout">Logout</a>
+          </li>
+          {% endif %}
+        </ul>
+      </div>
+    </nav>
+    <div class="cart-container">
+      <div
+        class="w-full d-flex justify-content-between mt-5 ml-5 mr-5 overflow-hidden"
+      >
+        <h1>Your Cart</h1>
+        <a href="/" class="fw-bold link text-black">Back to Home</a>
+      </div>
+      <div class="row justify-content-center">
+        {% for item in cart_items %}
+        <div class="col-md-12 mb-3 d-flex justify-content-center">
+          <div class="card">
+            <div class="row">
+              <div class="col-md-6 leftSide">
+                <img
+                  src="{{ item.product.image }}"
+                  class="card-img-top"
+                  alt="{{ item.product.name }}"
+                />
+              </div>
+              <div class="col-md-6">
+  <div class="card-body">
+    <h5 class="card-title">{{ item.product.name }}</h5>
+    <p class="card-text">Price: ₹{{ item.product.current_price }}</p>
+    <p class="card-text">Quantity: {{ item.quantity }}</p>
+    <div class="item-total">
+      <p>Total: ₹{{ item.product.current_price * item.quantity }}</p>
+    </div>
+    
+    <form action="{{ url_for('buy_now', product_id=item.product.id) }}" method="post">
+      <input type="hidden" name="quantity" value="{{ item.quantity }}">
+      <button class="btn btn-primary" type="submit">Buy Now</button>
+    </form>
+<form action="{{ url_for('delete_cart_item', item_id=item.id) }}" method="post" style="display:inline;">
+      <button class="btn btn-danger" type="submit">Delete</button>
+    </form>
+  </div>
+</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+
+      {% if not cart_items %}
+      <p class="text-center">Your cart is empty!</p>
+      {% endif %}
+      <div class="cart-summary">
+        <h2>Cart Summary</h2>
+        <p>Total Items: {{ cart_items | length }}</p>
+        <p>Total Price: ₹{{ total_price }}</p>
+      </div>
+    </div>
+    <footer class="footer-container">
+      <div class="footer-content">
+        <!-- First Column: Logo and Social Links -->
+        <div class="footer-column firstColumn">
+          <h1 class="footer-logo">KrishiKare</h1>
+          <img
+            src="../static/images/krishikare2.jpg"
+            alt="KrishiKare Logo"
+            style="width: 100px; border-radius: 50%; margin-bottom: 10px"
+          /><br /><br />
+          <div class="social-icons" style="margin-right: 12px">
+            <a href="https://www.instagram.com/"
+              ><img
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Instagram_logo_2022.svg/1024px-Instagram_logo_2022.svg.png"
+                alt="Instagram"
+            /></a>
+            <a href="https://www.facebook.com/"
+              ><img
+                src="https://cdn.pixabay.com/photo/2021/06/15/12/51/facebook-6338507_1280.png"
+                alt="Facebook"
+            /></a>
+            <a href="https://www.youtube.com/"
+              ><img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQoiMtJG_PC4lsb3-GZAiTZkUXAm3VlkJC1Ag&s"
+                alt="YouTube"
+            /></a>
+            <a href="https://x.com/?mx=2"
+              ><img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdB-EbJVMxRYtNz1i4dn7jOVSfHq-002oe4w&s"
+                alt="X"
+            /></a>
+            <a href="https://www.linkedin.com/"
+              ><img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRokEYt0yyh6uNDKL8uksVLlhZ35laKNQgZ9g&s"
+                alt="LinkedIn"
+            /></a>
+          </div>
+        </div>
+
+        <!-- Second Column: Quick Links -->
+        <div class="footer-column secondColumn">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">FAQ</a></li>
+          </ul>
+        </div>
+
+        <!-- Third Column: Contact Info -->
+        <div class="footer-column ThirdColumn">
+          <h3>Contact Us</h3>
+          <p>Missed Call To Order:</p>
+          <div class="contact-box">
+            <span>6366294085</span>
+          </div>
+          <p>WhatsApp:</p>
+          <div class="contact-box">
+            <span>+91 6366294085</span>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <div
+      class="footer-bottom mt-0 mb-0 d-flex align-items-center justify-content-center"
+    >
+      <p>&copy; 2024 KrishiKare Private Limited</p>
+    </div>
+  </body>
+</html>
